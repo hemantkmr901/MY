@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accordian</title>
+    <style>
+      * {
+        margin: 0;
+      }
+
+      .section {
+        padding: 20px 15px;
+        background-color: #eee;
+        color: #444;
+        transition: 0.3s;
+        overflow: hidden;
+      }
+
+      .section-content {
+        padding: 0 15px;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+
+      .active, .section:hover{
+          background-color: #ccc;
+      }
+
+      .section::after{
+          content: '\02795';
+          font-size: 7px;
+          padding-top: 3px;
+          /* text-align: center; */
+          color: #777;
+          float: right;
+      }
+
+      .active::after{
+         content:  '\02796';
+         font-size: 7px;
+          padding-top: 3px;
+          color: #777;
+          float: right;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="section">Section 1</p>
+    <p class="section-content" id="Section1">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat.
+    </p>
+    <p class="section">Section 2</p>
+    <p class="section-content" id="Section2">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat.
+    </p>
+
+    <p class="section">Section 3</p>
+    <p class="section-content" id="Section3">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat.
+    </p>
+    <script>
+      clickListener();
+      function clickListener() {
+        var section = document.getElementsByClassName("section");
+        var sec_content = document.getElementsByClassName("section-content");
+        for (let index = 0; index < section.length; index++) {
+          section[index].addEventListener("click", function () {
+            viewContent(this, sec_content);
+          });
+        }
+      }
+
+      function viewContent(x, y) {
+        var section_content = x.nextElementSibling;
+        x.classList.toggle("active");
+       if(section_content.style.maxHeight)
+       {
+        section_content.style.maxHeight = null;
+       }
+       else{
+        section_content.style.maxHeight = section_content.scrollHeight + "px";
+       }
+       
+      }
+    </script>
+  </body>
+</html>
