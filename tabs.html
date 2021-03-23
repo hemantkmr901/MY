@@ -61,6 +61,8 @@
           from {opacity: 0;}
           to {opacity: 1;}
       }
+
+
     </style>
   </head>
   <body>
@@ -124,7 +126,8 @@
             for (let index = 0; index < closebtn.length; index++) {
                 closebtn[index].addEventListener("click",function(){
                     this.parentElement.classList = "tablink";
-                    document.querySelector('[value="london"]').classList = "";
+                    console.log();
+                    document.querySelector("[value="+this.parentElement.id+"]").classList = "";
                 });
             }
         }
