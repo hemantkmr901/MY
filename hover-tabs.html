@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover Tabs</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .side-nav{
+            width: 300px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #eee;
+        }
+
+        .side-nav button{
+            width: 100%;
+            padding: 18px;
+            outline: none;
+            cursor: pointer;
+            border: none;
+            font-size: 17px;
+        }
+
+        .side-nav button:hover,.active{
+            background-color: #ccc;
+        }
+
+        .right-container{
+            margin-left: 300px;
+            height: 100%;
+            padding: 10px;
+        }
+
+        .content{
+            width: 100%;
+            display: none;
+        }
+
+        .show{
+            display: block;
+        }
+
+        .city{
+            font-size: 23px;
+            font-weight: bolder;
+            margin-top: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="side-nav">
+        <button>London</button>
+        <button>Paris</button>
+        <button>Tokyo</button>
+    </div>
+    <div class="right-container">
+        <div class="content">
+            <p class="city">Paris</p>
+            <p>Paris is the captial of France</p>
+        </div>
+        <div class="content">
+            <p class="city">London</p>
+            <p>London is the captial of England</p>
+        </div>
+        <div class="content">
+            <p class="city">Tokyo</p>
+            <p>Tokyo is the captial of Japan</p>
+        </div>
+    </div>
+    <script>
+        window.onload = function(){
+            onFocusListener();
+        }
+
+        function onFocusListener(){
+            var buttons = document.getElementsByClassName("side-nav")[0].querySelectorAll("button");
+            var content = document.getElementsByClassName("content");
+            for (let index = 0; index < buttons.length; index++) {
+                buttons[index].addEventListener("mouseover",function(){
+
+                    for (let i = 0; i < content.length; i++) {
+                        content[i].classList = "content";
+                        buttons[i].classList = "";   
+                    }
+                    
+                    content[index].classList.add("show");
+                    this.classList.add("active");
+                });
+            }
+        }
+    </script>
+</body>
+</html>
