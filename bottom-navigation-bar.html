@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bottom Navigation Bar</title>
+    <style>
+
+        .main{
+            height:720px;
+            overflow: hidden;
+            padding: 10px;
+        }
+        .navbar{
+            width: 100%;
+            overflow: hidden;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            background-color: #333;
+        }
+
+        .navbar a{
+            float: left;
+            padding: 14px;
+            text-decoration: none;
+            color:white;
+        }
+        .active{
+            background-color: #7acf50;
+        }
+    .navbar a:hover:not(.active)
+    {
+        background-color: #ddd;
+        color: black;
+    }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#" class="active">Home</a>
+        <a href="#">News</a>
+        <a href="#">Contact</a>
+    </div>
+    <div class="main">
+        <h1>Bottom Navigation Bar</h1>
+  <p>Some text some text some text.</p>
+    </div>
+</body>
+</html>
