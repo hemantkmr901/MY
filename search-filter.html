@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Filter</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            font-family: Verdana, sans-serif;
+        }
+
+        body{
+            margin: 0;
+            background-color: #ddd;
+        }
+
+        .menu{
+            width: 250px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #bbb;
+        }
+
+
+        .menu h1, .page-content h1{
+            padding: 10px 20px 0px 20px;
+            font-weight: lighter;
+        } 
+
+
+        .menu input{
+            width: 100%;
+            padding: 10px 20px;
+            border: none;
+            font-size: 17px;
+        }
+
+        .menu ul,.menu li{
+            padding: 0;
+            margin: 0;
+        }
+        .menu li{
+            width: 100%;
+            padding: 13px 20px;
+            list-style-type: none;
+        }
+
+        .menu li:hover {
+            background-color: #eee;
+        }
+
+        .page-content{
+            margin-left: 250px;
+            height: 100%;
+        }
+
+        .page-content p{
+            padding: 0 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <h1>Menu</h1>
+        <input type="text" name="" id="search-bar" placeholder="Search..">
+        <div class="content" >
+            <ul>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>HTML</li>
+                <li>PHP</li>
+                <li>Python</li>
+                <li>jQuery</li>
+                <li>SQL</li>
+                <li>Bootstrap</li>
+                <li>Node.js</li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-content">
+        <h1>Page Content</h1>
+        <p>Start to type for a specific category/link inside the search bar to "filter" the search options.
+            <p>Some text..Some text..Some text..Some text..Some text..Some text..Some text..Some text..</p>
+            <p>Some text..Some text..Some text..Some text..Some text..Some text..Some text..Some text..</p>
+            <p>Some text...</p>
+        </p>
+    </div>
+
+    <script>
+        window.onload = function(){
+            searchBar();
+        }
+
+        function searchBar(){
+            var inputSearchBar = document.getElementById("search-bar");
+            var li = document.getElementsByClassName("content")[0].querySelectorAll("li");
+            inputSearchBar.addEventListener("keyup",function(){
+                var x = inputSearchBar.value.toUpperCase();
+                for (let index = 0; index < li.length; index++) {
+                    if(li[index].innerHTML.toUpperCase().indexOf(x) > -1)
+                    {
+                         li[index].style.display = ""
+                    }   else{
+                        li[index].style.display = "none";
+                    }                 
+                }
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabs</title>
+    <style>
+        *{
+            font-family: Verdana, Geneva,sans-serif;
+        }
+        h1{
+            margin: 0;
+        }
+      .navbar {
+        width: 100%;
+        background-color: #eee;
+        overflow: hidden;
+      }
+
+      .navbar button {
+        float: left;
+        padding: 14px 16px;
+        font-size: 17px;
+        color: #444;
+        cursor: pointer;
+        outline: none;
+        border: none;
+      }
+
+      .navbar button:hover,.active{
+          background-color: #ddd;
+      }
+
+      .tablink{
+          padding: 15px;
+          display:none;
+          animation: fadeEffect 1s;
+          border-left: 1px solid #ddd ;
+          border-right: 1px solid #ddd ;
+          border-bottom: 1px solid #ddd ;
+      }
+
+    .tablink h1,.tablink h3{
+        font-weight: lighter;
+    }
+
+      .show{
+          display: block;
+      }
+
+
+      .closebtn{
+          font-size: 30px;
+          float: right;
+          padding-right: 10px;
+          cursor: pointer;
+      }
+
+      @keyframes fadeEffect {
+          from {opacity: 0;}
+          to {opacity: 1;}
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <button value="london" id="default">London</button>
+      <button value="paris">Paris</button>
+      <button value="tokyo">Tokyo</button>
+    </div>
+    <div class="tab-container">
+
+        <div class="tablink" id="london">
+            <span class="closebtn">&times;</span>
+            <h1>London</h1>
+            <h3>London is the capital of United Kingdom</h3>
+        </div>
+        <div class="tablink" id="paris">
+            <span class="closebtn">&times;</span>
+            <h1>Paris</h1>
+            <h3>Paris is the capital of France</h3>
+        </div>
+        <div class="tablink" id="tokyo">
+            <span class="closebtn">&times;</span>
+            <h1>Tokyo</h1>
+            <h3>Tokyo is the capital of Japan</h3>
+        </div>
+    </div>
+    <script>
+        window.onload = function(){
+            defaultView();
+            clickListener();
+            closeBtn();
+           
+        }
+
+        function defaultView(){
+            var id = 'london';
+            document.getElementById(id).classList.add("show");
+            document.querySelector("[value="+id+"]").classList.add("active");
+        }
+
+        function clickListener(){
+            var button = document.getElementsByClassName("navbar")[0].querySelectorAll("button");
+            var tablink = document.getElementsByClassName("tablink");
+            for (let index = 0; index < button.length; index++) {
+                button[index].addEventListener("click",function(){
+                   
+                    for (let index = 0; index < tablink.length; index++) {
+                        tablink[index].classList = "tablink";
+                        button[index].classList = "";
+                    }
+                    button[index].classList.add("active");
+                    document.getElementById(button[index].getAttribute("value")).classList.add("show");
+                });
+            }
+
+
+        }
+
+        function closeBtn(){
+            var closebtn = document.getElementsByClassName("closebtn");
+            for (let index = 0; index < closebtn.length; index++) {
+                closebtn[index].addEventListener("click",function(){
+                    this.parentElement.classList = "tablink";
+                    console.log();
+                    document.querySelector("[value="+this.parentElement.id+"]").classList = "";
+                });
+            }
+        }
+    </script>
+  </body>
+</html>
