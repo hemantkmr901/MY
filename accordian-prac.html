@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordian</title>
+    <style>*{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        box-sizing: border-box;
+        margin:0;
+    }
+        .main{
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .main button{
+            width: 100%;
+            background-color: #eee;
+            font-size: 17px;
+            border: none;
+            outline: none;
+            text-align: left;
+            padding: 15px;
+            color: #444;
+        }
+
+        .main button:after{
+            content: '\02795';
+            font-size: 8px;
+            color: #777;
+            float: right;
+            padding-top: 5px;
+        }
+
+        .main button.active, .main button:hover {
+            background-color: #ccc;
+        }
+
+        .main button.active:after{
+            content:"\2796";
+        }
+        .main .panel{
+            max-height: 0px;
+            overflow: hidden;
+            transition: max-height 0.3s;
+        }
+
+
+        .main div p{
+            padding: 10px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+
+        <button >Section 1</button>
+        <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <button>Section 2</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <button>Section 3</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+</div>
+
+<script>
+    let button = document.querySelectorAll("button");
+    let button_length = button.length;
+    let panel = document.getElementsByClassName("panel");
+    for (let index = 0; index < button_length; index++) {
+        button[index].addEventListener("click",function(){
+
+           this.classList.toggle("active");
+           let panel = this.nextElementSibling;
+           if(panel.style.maxHeight){
+               panel.style.maxHeight = null;
+           }    else{
+               panel.style.maxHeight = panel.scrollHeight + 
+               "px";
+           }
+        })
+    }
+</script>
+</body>
+</html>
